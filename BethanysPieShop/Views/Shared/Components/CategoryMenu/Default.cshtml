@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Category>
+
+@if (Model.Count<Category>() > 2)
+{
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+           asp-controller="Pie" asp-action="List">
+            Pies
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            @foreach (var category in Model)
+            {
+                <li>
+                    <a class="dropdown-item"
+                       asp-controller="Pie"
+                       asp-action="List"
+                       asp-route-category="@category.CategoryName">@category.CategoryName</a>
+                </li>
+            }
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <a class="dropdown-item"
+                   asp-controller="Pie"
+                   asp-action="List">All Pies</a>
+            </li>
+        </ul>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a asp-controller="Pie" asp-action="List" class="nav-link">Pies</a>
+    </li>
+}

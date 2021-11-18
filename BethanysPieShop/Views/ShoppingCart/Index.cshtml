@@ -1,0 +1,19 @@
+﻿@model ShoppingCartViewModel
+
+<h2>Your Shopping Cart</h2>
+<h4>There are delicious pies in your shopping cart</h4>
+
+@foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+{
+    <hr />
+    <div>
+        Name : <a asp-controller="Pie" asp-action="Details" asp-route-id="@item.Pie.PieId">@item.Pie.Name</a>
+    </div>
+    <div>Quantity : @item.Amount</div>
+    <div>Total Price : @((item.Amount * item.Pie.Price).ToString("c"))</div>
+    <div>Description : @item.Pie.ShortDescription</div>
+}
+
+<hr />
+
+Total : @Model.ShoppingCartTotal

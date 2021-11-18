@@ -1,0 +1,12 @@
+﻿@model ShoppingCartViewModel
+
+@if (Model.ShoppingCart.ShoppingCartItems.Count > 0) 
+{
+    <a asp-controller="ShoppingCart" asp-action="Index" class="nav-link position-relative">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger">
+            @Model.ShoppingCart.ShoppingCartItems.Count +
+            <span class="visually-hidden">Shopping Cat</span>
+        </span>
+    </a>
+}
